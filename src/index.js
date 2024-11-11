@@ -2,6 +2,39 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
+const skills = [
+  {
+    skill: 'HTML+CSS',
+    level: 'advanced',
+    color: '#2662EA',
+  },
+  {
+    skill: 'JavaScript',
+    level: 'advanced',
+    color: '#EFD81D',
+  },
+  {
+    skill: 'Web Design',
+    level: 'advanced',
+    color: '#C3DCAF',
+  },
+  {
+    skill: 'Git and GitHub',
+    level: 'intermediate',
+    color: '#E84F33',
+  },
+  {
+    skill: 'React',
+    level: 'advanced',
+    color: '#60DAFB',
+  },
+  {
+    skill: 'Svelte',
+    level: 'beginner',
+    color: '#FF3B00',
+  },
+];
+
 function App() {
   return (
     <div className="card">
@@ -30,6 +63,8 @@ const Intro = (props) => {
   );
 };
 
+// From Challenge #1
+/*
 const SkillList = (props) => {
   return (
     <div className="skill-list">
@@ -45,6 +80,29 @@ const Skill = (props) => {
   return (
     <span className="skill" style={{ backgroundColor: props.color }}>
       {props.skill} 💪🏻
+    </span>
+  );
+};
+*/
+
+const SkillList = (props) => {
+  return (
+    <div className="skill-list">
+      {skills.map((skill) => (
+        <Skill skillObj={skill} />
+      ))}
+    </div>
+  );
+};
+
+const Skill = ({ skillObj }) => {
+  let emoji = '';
+  if (skillObj.level === 'beginner') emoji = '👶🏼';
+  if (skillObj.level === 'intermediate') emoji = '👍🏻';
+  if (skillObj.level === 'advanced') emoji = '💪🏻';
+  return (
+    <span className="skill" style={{ backgroundColor: skillObj.color }}>
+      {skillObj.skill} {emoji}
     </span>
   );
 };
